@@ -1,0 +1,78 @@
+<div class="viewTable">
+    <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Product Details</h4>
+              <div class="searchAdd">
+                <form class="form-inline mr-auto">
+                  <div class="search-element">
+                    <input class="form-control" type="search" name="searchProduct" id="searchProduct" placeholder="Search by product name" data-width="200">                 
+                    <button class="btn" type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <span>&nbsp;&nbsp;</span>
+                    <a href="add.php" class="btn btn-bg" href="javascript:void(0)" (click)="addProduct()">
+                      <i class="fas fa-plus-square"></i>&nbsp; Add
+                    </a>
+                  </div>
+                </form>
+              </div> 
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped" id="table-1">
+                  <thead>
+                  <tr>                
+                    <th>Product Id</th>
+                    <th>Product Name</th>
+                    <th>Product Type</th>
+                    <th>Brand Name</th>
+                    <th>Lable</th>
+                    <th>Starting Inventory</th>
+                    <th>In Inventory</th>
+                    <th>Minimum Required</th>
+                    <th>Unit Price</th>
+                    <th>Selling Price</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let product of allProducts">
+                    <td>{{product.product_id}}</td>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.product_type}}</td>
+                    <td>{{product.product_brand}}</td>
+                    <td>{{product.product_lable}}</td>
+                    <td>{{product.product_start_inv}}</td>
+                    <td>{{product.product_in_inv}}</td>
+                    <td>{{product.product_min_req}}</td>
+                    <td>{{product.product_unit_pr}}</td>
+                    <td>{{product.product_sell_pr}}</td>
+                    <td>
+                        <button href="javascript:void(0)" class="btn btn-edit" href="javascript:void(0)" (click)="editProduct(product)"><i class="far fa-edit"></i>&nbsp; Edit</button>
+                    </td>
+                  </tr>
+                 <!-- <tr>
+                    <td>0001</td>
+                    <td>AAAA</td>
+                    <td>BBBB</td>
+                    <td>CCCC</td>
+                    <td>DDDD</td>
+                    <td>2000</td>
+                    <td>1000</td>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>100</td>
+                    <td>
+                        <button href="javascript:void(0)" class="btn btn-edit" (click)="editProduct()"><i class="far fa-edit"></i>&nbsp; Edit</button>
+                    </td>
+                  </tr>       -->            
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

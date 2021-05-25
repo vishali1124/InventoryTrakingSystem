@@ -1,0 +1,75 @@
+<div class="viewTable">
+    <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Outgoing Order Details</h4>
+              <div class="searchAdd">
+                <form class="form-inline mr-auto">
+                  <div class="search-element">
+                    <input class="form-control" type="search" name="searchProduct" id="searchProduct" placeholder="Search by product name" data-width="200">                 
+                    <button class="btn" type="submit">
+                      <i class="fas fa-search"></i>
+                    </button>
+                    <span>&nbsp;&nbsp;</span>
+                    <a href="add.php" class="btn btn-bg" href="javascript:void(0)" (click)="addOrder()">
+                      <i class="fas fa-plus-square"></i>&nbsp; Add
+                    </a>
+                  </div>
+                </form>
+              </div> 
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped" id="table-1">
+                  <thead>
+                  <tr>                
+                    <th>Order Id</th>
+                    <th>Product Id</th>
+                    <th>Invoice No</th>
+                    <th>Order Date</th>
+                    <th>Total Price</th>
+                    <th>Brand Name</th>
+                    <th>Number Shipped</th>
+                    <th>Customer First Name</th>
+                    <th>Customer First Name</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>                     
+                 <tr *ngFor="let order of allOrder">
+                    <td>{{order.order_id}}</td>
+                    <td>{{order.order_pro_id}}</td>
+                    <td>{{order.order_invoice}}</td>
+                    <td>{{order.order_date}}</td>
+                    <td>{{order.order_tprice}}</td>
+                    <td>{{order.order_brand}}</td>
+                    <td>{{order.order_no_shipped}}</td>
+                    <td>{{order.order_cust_fname}}</td>
+                    <td>{{order.order_cust_lname}}</td>
+                    <td>
+                        <button href="javascript:void(0)" class="btn btn-edit" (click)="editOrder()"><i class="far fa-edit"></i>&nbsp; Edit</button>
+                    </td>
+                  </tr> 
+                  <!--<tr>
+                    <td>0001</td>
+                    <td>0002</td>
+                    <td>1121</td>
+                    <td>05-12-2021</td>
+                    <td>10000</td>
+                    <td>DDDD</td>
+                    <td>1000</td>
+                    <td>FFFF</td>
+                    <td>EEEE</td>
+                    <td>
+                        <button href="javascript:void(0)" class="btn btn-edit" (click)="editOrder()"><i class="far fa-edit"></i>&nbsp; Edit</button>
+                    </td>
+                  </tr> -->          
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

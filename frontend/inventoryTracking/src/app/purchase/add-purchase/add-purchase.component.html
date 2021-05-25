@@ -1,0 +1,79 @@
+<div class="addForm">
+    <div class="card">
+        <div class="card-header">
+          <h4>
+              Add Purchase
+          </h4>      
+        </div>    
+        <div class="card-body">
+            <form [formGroup]="addPurchase"  (ngSubmit)="onFormSubmit()">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Purchase Id</label>
+                        <input type="text" class="form-control" formControlName="Purchase_id" name="Purchase_id" id="Purchase_id" required  ngModel>
+                        <span class="error" *ngIf="addPurchase.controls['Purchase_id'].invalid && addPurchase.controls['Purchase_id'].touched">
+                            Please Enter Purchase Id
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Product Id</label>
+                        <input type="text" class="form-control" formControlName="Purchase_pro_id" name="Purchase_pro_id" id="Purchase_pro_id" required  ngModel>
+                        <span class="error" *ngIf="addPurchase.controls['Purchase_pro_id'].invalid && addPurchase.controls['Purchase_pro_id'].touched">
+                            Please Enter Product Id
+                        </span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputDefault">Purchase Date</label>
+                        <input type="date" class="form-control" formControlName="Purchase_date" name="Purchase_date" id="Purchase_date" required ngModel>
+                        <span class="error" *ngIf="addPurchase.controls['Purchase_date'].invalid && addPurchase.controls['Purchase_date'].touched">
+                            Please Enter Purchase Date
+                        </span>
+                        
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputDefault">Number Of Recived</label>
+                        <input type="text" class="form-control" formControlName="Purchase_no" name="Purchase_no" id="Purchase_no" required ngModel>
+                        <span class="error" *ngIf="addPurchase.controls['Purchase_no'].invalid && addPurchase.controls['Purchase_no'].touched">
+                            Please Enter Last Name
+                        </span>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Price</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text bg-color">
+                                Rs
+                                </div>
+                            </div>
+                            <input type="text" class="form-control currency" formControlName="Purchase_price" name="Purchase_price" id="Purchase_price" required ngModel>
+                        </div>
+                        <span class="error" *ngIf="addPurchase.controls['Purchase_price'].invalid && addPurchase.controls['Purchase_price'].touched">
+                            Please Enter ETF
+                        </span> 
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Supplier First Name</label>
+                        <input type="text" class="form-control" formControlName="Purchase_sup_fname" name="Purchase_sup_fname" id="Purchase_sup_fname" required  ngModel>
+                        <span class="error" *ngIf="addPurchase.controls['Purchase_sup_fname'].invalid && addPurchase.controls['Purchase_sup_fname'].touched">
+                            Please Enter Supplier First Name
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Supplier Last Name</label>
+                        <input type="text" class="form-control" formControlName="Purchase_sup_lname" name="Purchase_sup_lname" id="Purchase_sup_lname" required  ngModel>
+                        <span class="error" *ngIf="addPurchase.controls['Purchase_sup_lname'].invalid && addPurchase.controls['Purchase_sup_lname'].touched">
+                            Please Enter Supplier Last Name
+                        </span>
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <button class="btn btn-bg"><i class="fas fa-plus-square"></i>&nbsp; Add Purchase</button>
+                </div>
+            </form>
+        </div>   
+      </div>
+</div>
