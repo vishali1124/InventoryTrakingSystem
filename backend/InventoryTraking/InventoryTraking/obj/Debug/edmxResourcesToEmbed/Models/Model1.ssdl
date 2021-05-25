@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="inventoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="order_pro_id" Type="int" />
+    <Property Name="order_invoice" Type="int" />
+    <Property Name="order_date" Type="date" />
+    <Property Name="order_tprice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="order_brand" Type="varchar" MaxLength="150" />
+    <Property Name="order_no_shipped" Type="int" />
+    <Property Name="order_cust_fname" Type="varchar" MaxLength="250" />
+    <Property Name="order_cust_lname" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="product_name" Type="varchar" MaxLength="255" />
+    <Property Name="product_type" Type="varchar" MaxLength="255" />
+    <Property Name="product_brand" Type="varchar" MaxLength="255" />
+    <Property Name="product_lable" Type="varchar" MaxLength="255" />
+    <Property Name="product_start_inv" Type="int" />
+    <Property Name="product_in_inv" Type="int" />
+    <Property Name="product_min_req" Type="int" />
+    <Property Name="product_unit_pr" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="product_sell_pr" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="purchase">
+    <Key>
+      <PropertyRef Name="Purchase_id" />
+    </Key>
+    <Property Name="Purchase_id" Type="int" Nullable="false" />
+    <Property Name="Purchase_pro_id" Type="int" />
+    <Property Name="Purchase_date" Type="date" />
+    <Property Name="Purchase_no" Type="int" />
+    <Property Name="Purchase_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Purchase_sup_fname" Type="varchar" MaxLength="250" />
+    <Property Name="Purchase_sup_lname" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityContainer Name="inventoryModelStoreContainer">
+    <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="purchase" EntityType="Self.purchase" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

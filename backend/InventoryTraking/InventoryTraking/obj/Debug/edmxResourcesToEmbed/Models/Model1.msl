@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="inventoryModelStoreContainer" CdmEntityContainer="inventoryEntities1">
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="inventoryModel.order">
+        <MappingFragment StoreEntitySet="order">
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="order_pro_id" ColumnName="order_pro_id" />
+          <ScalarProperty Name="order_invoice" ColumnName="order_invoice" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="order_tprice" ColumnName="order_tprice" />
+          <ScalarProperty Name="order_brand" ColumnName="order_brand" />
+          <ScalarProperty Name="order_no_shipped" ColumnName="order_no_shipped" />
+          <ScalarProperty Name="order_cust_fname" ColumnName="order_cust_fname" />
+          <ScalarProperty Name="order_cust_lname" ColumnName="order_cust_lname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="inventoryModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_type" ColumnName="product_type" />
+          <ScalarProperty Name="product_brand" ColumnName="product_brand" />
+          <ScalarProperty Name="product_lable" ColumnName="product_lable" />
+          <ScalarProperty Name="product_start_inv" ColumnName="product_start_inv" />
+          <ScalarProperty Name="product_in_inv" ColumnName="product_in_inv" />
+          <ScalarProperty Name="product_min_req" ColumnName="product_min_req" />
+          <ScalarProperty Name="product_unit_pr" ColumnName="product_unit_pr" />
+          <ScalarProperty Name="product_sell_pr" ColumnName="product_sell_pr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchases">
+      <EntityTypeMapping TypeName="inventoryModel.purchase">
+        <MappingFragment StoreEntitySet="purchase">
+          <ScalarProperty Name="Purchase_id" ColumnName="Purchase_id" />
+          <ScalarProperty Name="Purchase_pro_id" ColumnName="Purchase_pro_id" />
+          <ScalarProperty Name="Purchase_date" ColumnName="Purchase_date" />
+          <ScalarProperty Name="Purchase_no" ColumnName="Purchase_no" />
+          <ScalarProperty Name="Purchase_price" ColumnName="Purchase_price" />
+          <ScalarProperty Name="Purchase_sup_fname" ColumnName="Purchase_sup_fname" />
+          <ScalarProperty Name="Purchase_sup_lname" ColumnName="Purchase_sup_lname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
