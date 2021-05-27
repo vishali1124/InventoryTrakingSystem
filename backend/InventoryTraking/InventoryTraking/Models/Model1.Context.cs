@@ -13,10 +13,10 @@ namespace InventoryTraking.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class inventoryEntities1 : DbContext
+    public partial class inventoryEntities2 : DbContext
     {
-        public inventoryEntities1()
-            : base("name=inventoryEntities1")
+        public inventoryEntities2()
+            : base("name=inventoryEntities2")
         {
         }
     

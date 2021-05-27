@@ -14,15 +14,26 @@ namespace InventoryTraking.Models
     
     public partial class product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public product()
+        {
+            this.orders = new HashSet<order>();
+            this.purchases = new HashSet<purchase>();
+        }
+    
         public int product_id { get; set; }
         public string product_name { get; set; }
         public string product_type { get; set; }
         public string product_brand { get; set; }
         public string product_lable { get; set; }
         public Nullable<int> product_start_inv { get; set; }
-        public Nullable<int> product_in_inv { get; set; }
         public Nullable<int> product_min_req { get; set; }
         public Nullable<decimal> product_unit_pr { get; set; }
         public Nullable<decimal> product_sell_pr { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order> orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<purchase> purchases { get; set; }
     }
 }

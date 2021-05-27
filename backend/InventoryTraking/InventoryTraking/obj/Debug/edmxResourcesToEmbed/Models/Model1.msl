@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="inventoryModelStoreContainer" CdmEntityContainer="inventoryEntities1">
+  <EntityContainerMapping StorageEntityContainer="inventoryModelStoreContainer" CdmEntityContainer="inventoryEntities2">
     <EntitySetMapping Name="orders">
       <EntityTypeMapping TypeName="inventoryModel.order">
         <MappingFragment StoreEntitySet="order">
@@ -25,7 +25,6 @@
           <ScalarProperty Name="product_brand" ColumnName="product_brand" />
           <ScalarProperty Name="product_lable" ColumnName="product_lable" />
           <ScalarProperty Name="product_start_inv" ColumnName="product_start_inv" />
-          <ScalarProperty Name="product_in_inv" ColumnName="product_in_inv" />
           <ScalarProperty Name="product_min_req" ColumnName="product_min_req" />
           <ScalarProperty Name="product_unit_pr" ColumnName="product_unit_pr" />
           <ScalarProperty Name="product_sell_pr" ColumnName="product_sell_pr" />

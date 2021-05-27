@@ -11,7 +11,7 @@ namespace InventoryTraking.Controllers
     [RoutePrefix("Api/Purchase")]
     public class PurchaseController : ApiController
     {
-        inventoryEntities1 objEntity = new inventoryEntities1();
+        inventoryEntities2 objEntity = new inventoryEntities2();
 
         //get all purchase
         [HttpGet]

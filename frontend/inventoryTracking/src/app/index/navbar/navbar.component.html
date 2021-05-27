@@ -2,11 +2,12 @@
     <div class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
           <li>
+            <!--Site logo-->
             <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg collapse-btn"> 
               <img alt="image" src="../../assets/img/logo.png" class="logo"> 
             </a>
           </li>
-          
+          <!--Search-->
           <li>
             <form class="form-inline mr-auto">
               <div class="search-element">
@@ -20,20 +21,24 @@
         </ul>
       </div>
       <ul class="navbar-nav navbar-right">
+        <!--Home-->
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="javascript:void(0)" (click)="viewHome()">Home</a>
         </li>
+        <!--About Us-->
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="javascript:void(0)" (click)="viewAboutUS()">Abou Us</a>
         </li>
+        <!--Report-->
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="javascript:void(0)" (click)="viewReport()">Reports</a>
-        </li>
+        </li>        
         <li class="dropdown dropdown-list-toggle">
           <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle">
             <i class="far fa-envelope icon"></i>
             <span class="badge headerBadge1"> 6 </span> 
           </a>
+          <!--Message-->
           <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
             <div class="dropdown-header">
               Messages
@@ -95,6 +100,7 @@
           <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg">
             <i class="far fa-bell icon"></i>
           </a>
+          <!--Notifications-->
           <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
             <div class="dropdown-header">
               Notifications
@@ -146,6 +152,7 @@
             <img alt="image" src="assets/img/user.png" class="user-img-radious-style"> 
             <span class="d-sm-none d-lg-inline-block"></span>
            </a>
+           <!--User-->
           <div class="dropdown-menu dropdown-menu-right pullDown">
             <div class="dropdown-title">Hello Sarah Smith</div>
             <a href="profile.html" class="dropdown-item has-icon"> <i class="far
@@ -156,7 +163,7 @@
               Settings
             </a>
             <div class="dropdown-divider"></div>
-            <a href="auth-login.html" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+            <a href="javascript:void(0)" (click)="Logout()"> <i class="fas fa-sign-out-alt"></i>
               Logout
             </a>
           </div>

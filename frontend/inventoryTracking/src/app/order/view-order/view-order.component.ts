@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class ViewOrderComponent implements OnInit {
 
+  p: any;
+  filter :any;
   searchForm: FormGroup;
   allOrder : Observable<Order[]>;
 
@@ -33,9 +35,4 @@ export class ViewOrderComponent implements OnInit {
   editOrder(){
     this.router.navigate(['edit-o']);
   }
-
-  search(){
-
-  }
-
 }

@@ -25,4 +25,8 @@ export class NavbarComponent implements OnInit {
     //this.router.navigate(['view']);
   }
 
+  Logout(){
+    this.router.navigate(['login']);
+  }
+
 }

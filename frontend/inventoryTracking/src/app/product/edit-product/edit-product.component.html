@@ -6,11 +6,12 @@
           </h4>      
         </div>    
         <div class="card-body">
-            <form [formGroup]="editProduct"  method="POST">
+            <!--Form Start-->
+            <form [formGroup]="editProduct">
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="inputDefault">Product Id</label>
-                        <input type="text" class="form-control" formControlName="product_id" name="product_id" id="product_id" required  ngModel>
+                        <input type="text" class="form-control" formControlName="product_id" name="product_id" id="product_id" required  ngModel readonly>
                         <span class="error" *ngIf="editProduct.controls['product_id'].invalid && editProduct.controls['product_id'].touched">
                             Please Enter Product Id
                         </span>
@@ -24,7 +25,11 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="inputDefault">Product Type</label>
-                        <input type="text" class="form-control" formControlName="product_type" name="product_type" id="product_type" required  ngModel>
+                        <select class="form-control"  formControlName="product_type" name="product_type" id="product_type" required  ngModel>
+                            <option class="option" *ngFor="let productType of productTypes" value="{{productType}}">
+                                {{productType}}
+                            </option>
+                        </select>
                         <span class="error" *ngIf="editProduct.controls['product_type'].invalid && editProduct.controls['product_type'].touched">
                             Please Enter Product Type
                         </span>
@@ -33,7 +38,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputDefault">Brand Name</label>
-                        <input type="text" class="form-control" formControlName="product_brand" name="product_brand" id="product_brand" required  ngModel>
+                        <select class="form-control"  formControlName="product_brand" name="product_brand" id="product_brand" required  ngModel>
+                            <option class="option" *ngFor="let productBrand of productBrands" value="{{productBrand}}">
+                                {{productBrand}}
+                            </option>
+                        </select>
                         <span class="error" *ngIf="editProduct.controls['product_brand'].invalid && editProduct.controls['product_brand'].touched">
                             Please Enter Brand Name
                         </span>
@@ -47,22 +56,15 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <label for="inputDefault">Starting Inventory</label>
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Inventory</label>
                         <input type="number" class="form-control" formControlName="product_start_inv" name="product_start_inv" id="product_start_inv" required  ngModel>
                         <span class="error" *ngIf="editProduct.controls['product_start_inv'].invalid && editProduct.controls['product_start_inv'].touched">
                             Please Enter Starting Inventory
                         </span>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDefault">In Inventory</label>
-                        <input type="number" class="form-control" formControlName="product_in_inv" name="product_in_inv" id="product_in_inv" required  ngModel>
-                        <span class="error" *ngIf="editProduct.controls['product_in_inv'].invalid && editProduct.controls['product_in_inv'].touched">
-                            Please Enter In Inventory
-                        </span>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputDefault">Minimum Required</label>
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Minimal</label>
                         <input type="number" class="form-control" formControlName="product_min_req" name="product_min_req" id="product_min_req" required  ngModel>
                         <span class="error" *ngIf="editProduct.controls['product_min_req'].invalid && editProduct.controls['product_min_req'].touched">
                             Please Enter Minimum Required
@@ -100,9 +102,10 @@
                     </div>                    
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-bg" href="javascript:void(0)" (click)="save()"><i class="fas fa-save"></i>&nbsp; Save </button>
+                    <button class="btn btn-bg" href="javascript:void(0)"  (click)="updateProduct()"><i class="fas fa-save"></i>&nbsp; Save </button>
                 </div>
             </form>
+            <!--Form End-->
         </div>   
       </div>
 </div>

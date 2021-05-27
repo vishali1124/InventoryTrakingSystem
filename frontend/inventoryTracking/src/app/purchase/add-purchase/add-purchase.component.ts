@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { PurchaseService } from '../../services/purchase.service';
 import { Purchase } from '../../Models/purchase'
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/Models/product';
+
 
 @Component({
   selector: 'app-add-purchase',
@@ -12,19 +16,31 @@ import { Observable } from 'rxjs';
 })
 export class AddPurchaseComponent implements OnInit {
 
+  //variable diclarations
   addPurchase: FormGroup;
   allPurchase : Observable<Purchase[]>;
   Purchase_id_update = null;
   message  = null;
+  allProducts: Observable<Product[]>;
 
+  //constuctor
   constructor(private formBuilder: FormBuilder,
               private router : Router,
-              private purchaseService : PurchaseService) { }
+              private purchaseService : PurchaseService,
+              private toastr: ToastrService,
+              private productService: ProductService) { }
 
   ngOnInit(): void {
 
+    //get product ids
+    this.productService.getAllProduct()
+                .subscribe((data:any)=>{
+                  this.allProducts = data;
+                  console.log(this.allProducts);
+    });
+
+       //get form values
     this.addPurchase = this.formBuilder.group({
-      Purchase_id: ['', Validators.required],
       Purchase_pro_id: ['', Validators.required],
       Purchase_date: ['', Validators.required],
       Purchase_no: ['', Validators.required],
@@ -34,18 +50,20 @@ export class AddPurchaseComponent implements OnInit {
     });
   }
 
- onFormSubmit(){
-    const product = this.addPurchase.value;
-    this.createPurchase(product);
-    this.addPurchase.reset();
-   // this.router.navigate(['view-p']);
-  }
+  //form sumbition methode
+  onFormSubmit(){
+      const purchase = this.addPurchase.value;
+      this.createPurchase(purchase);
+      this.addPurchase.reset();
+      this.toastr.success('Record insert Successfull!');
+      this.router.navigate(['view-i']);
+    }
 
+  //create new product
   createPurchase(purchase : Purchase){
     if(this.Purchase_id_update == null){
       this.purchaseService.createPurchase(purchase)
       .subscribe( () => {
-          this.message = "Record saved Successfull";
           this.Purchase_id_update == null;
           this.addPurchase.reset();
       });

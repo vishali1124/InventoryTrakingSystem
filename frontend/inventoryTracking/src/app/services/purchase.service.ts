@@ -14,8 +14,7 @@ export class PurchaseService {
 
   //create purchase
   createPurchase(purchase: Purchase):Observable<Purchase>{
-   // const httpOptions = {Headers: new HttpHeaders({'Content-Type':'application/json'})};
-    return this.http.post<Purchase>(environment.baseUrl + 'Api/Purchase/InsertPurchase', purchase, /*httpOptions*/);
+    return this.http.post<Purchase>(environment.baseUrl + 'Api/Purchase/InsertPurchase', purchase);
   }
 
   //get all purchase

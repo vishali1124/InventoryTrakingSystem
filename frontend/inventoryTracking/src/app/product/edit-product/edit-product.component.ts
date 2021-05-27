@@ -10,8 +10,12 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class EditProductComponent implements OnInit {
 
+  //variable diclarations
   editProduct: FormGroup;
+  productTypes : String[];
+  productBrands: String[];
 
+  //constuctor
   constructor(private formBuilder: FormBuilder,
               private router :Router,
               private routes :ActivatedRoute,
@@ -19,6 +23,12 @@ export class EditProductComponent implements OnInit {
               private product: ProductService) { }
 
   ngOnInit(): void {
+
+    //product name
+    this.productTypes = ['Highlighter','Glue','Pencil','Pen','Ballpoint'];
+
+    //product brands
+    this.productBrands = ['Atlas', 'Promate', 'Mango', 'Rathna', 'Ten'];
 
     const routesParams = this.routes.snapshot.params;
     console.log(routesParams.product_id);
@@ -30,33 +40,22 @@ export class EditProductComponent implements OnInit {
       product_brand: ['', Validators.required],
       product_lable: ['', Validators.required],
       product_start_inv: ['', Validators.required],
-      product_in_inv: ['', Validators.required],
       product_min_req: ['', Validators.required],
       product_unit_pr: ['', Validators.required],
       product_sell_pr: ['', Validators.required]
-    });
-
+    });  
+    
     this.productService.getProductById(routesParams.product_id)
     .subscribe((data :any) =>{
       this.editProduct.patchValue(data);
-    });
+    });  
   }
 
-  
-  save(){
-      this.router.navigate(['view-p']);
-  }
-
- /* 
- (click)="updateProduct()" 
+ //update product details
  updateProduct(){
-    product.product_id = this.updateProduct;  
-      this.employeeService.updateEmployee(employee).subscribe(() => {  
-        this.dataSaved = true;  
-        this.massage = 'Record Updated Successfully';  
-        this.loadAllEmployees();  
-        this.employeeIdUpdate = null;  
-        this.employeeForm.reset();  
-      });  
-  }*/
+    this.productService.updateProduct(this.editProduct.value)
+    .subscribe( ()=> {
+      this.router.navigate(['view-p']);
+    });   
+  }
 }

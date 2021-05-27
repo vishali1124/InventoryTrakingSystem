@@ -14,8 +14,7 @@ export class ProductService {
   
   //create product
   createProduct(product: Product):Observable<Product>{
-    //const httpOptions = { headers: new HttpHeaders({'Content-Type':'application/json'})};
-    return this.http.post<Product>(environment.baseUrl + 'Api/Product/InsertProduct', product /*httpOptions*/);  
+    return this.http.post<Product>(environment.baseUrl + 'Api/Product/InsertProduct', product);  
   }
 
   //get all product
@@ -27,4 +26,14 @@ export class ProductService {
   getProductById(product_id: String):Observable<Product>{
     return this.http.get<Product>(environment.baseUrl + 'Api/Product/GetProductById/' + product_id);    
   }
+
+  //update product
+  updateProduct(product: Product): Observable<Product> {  
+    return this.http.put<Product>(environment.baseUrl + 'Api/Product/UpdateProductDetails', product);  
+  }  
+
+  //delete product
+  DeleteProductDetails(product_id: String): Observable<Product> {  
+   return this.http.delete<Product>(environment.baseUrl + 'Api/Product/DeleteProductDetails?id=' + product_id);  
+  } 
 }

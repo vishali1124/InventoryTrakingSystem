@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="order_id" />
     </Key>
-    <Property Name="order_id" Type="Int32" Nullable="false" />
+    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="order_pro_id" Type="Int32" />
     <Property Name="order_invoice" Type="Int32" />
     <Property Name="order_date" Type="DateTime" Precision="0" />
@@ -13,37 +13,72 @@
     <Property Name="order_no_shipped" Type="Int32" />
     <Property Name="order_cust_fname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="order_cust_lname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="product" Relationship="Self.FK_order_product" FromRole="order" ToRole="product" />
   </EntityType>
   <EntityType Name="product">
     <Key>
       <PropertyRef Name="product_id" />
     </Key>
-    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="product_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="product_type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="product_brand" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="product_lable" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="product_start_inv" Type="Int32" />
-    <Property Name="product_in_inv" Type="Int32" />
     <Property Name="product_min_req" Type="Int32" />
     <Property Name="product_unit_pr" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="product_sell_pr" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_order_product" FromRole="product" ToRole="order" />
+    <NavigationProperty Name="purchases" Relationship="Self.FK_purchase_product" FromRole="product" ToRole="purchase" />
   </EntityType>
   <EntityType Name="purchase">
     <Key>
       <PropertyRef Name="Purchase_id" />
     </Key>
-    <Property Name="Purchase_id" Type="Int32" Nullable="false" />
+    <Property Name="Purchase_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Purchase_pro_id" Type="Int32" />
     <Property Name="Purchase_date" Type="DateTime" Precision="0" />
     <Property Name="Purchase_no" Type="Int32" />
     <Property Name="Purchase_price" Type="Decimal" Precision="18" Scale="0" />
     <Property Name="Purchase_sup_fname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <Property Name="Purchase_sup_lname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="product" Relationship="Self.FK_purchase_product" FromRole="purchase" ToRole="product" />
   </EntityType>
-  <EntityContainer Name="inventoryEntities1" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK_order_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="order_pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_purchase_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="purchase" Type="Self.purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="purchase">
+        <PropertyRef Name="Purchase_pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="inventoryEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="orders" EntityType="Self.order" />
     <EntitySet Name="products" EntityType="Self.product" />
     <EntitySet Name="purchases" EntityType="Self.purchase" />
+    <AssociationSet Name="FK_order_product" Association="Self.FK_order_product">
+      <End Role="product" EntitySet="products" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_purchase_product" Association="Self.FK_purchase_product">
+      <End Role="product" EntitySet="products" />
+      <End Role="purchase" EntitySet="purchases" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

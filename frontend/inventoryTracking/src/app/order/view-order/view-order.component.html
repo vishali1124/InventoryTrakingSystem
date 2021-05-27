@@ -7,11 +7,10 @@
               <div class="searchAdd">
                 <form class="form-inline mr-auto">
                   <div class="search-element">
-                    <input class="form-control" type="search" name="searchProduct" id="searchProduct" placeholder="Search by product name" data-width="200">                 
-                    <button class="btn" type="submit">
-                      <i class="fas fa-search"></i>
-                    </button>
+                    <!--Search-->
+                    <input class="form-control" type="search"  [(ngModel)]="filter" name="searchProduct" id="searchProduct" placeholder="Search by product name" data-width="200">                 
                     <span>&nbsp;&nbsp;</span>
+                    <!--Add Order-->
                     <a href="add.php" class="btn btn-bg" href="javascript:void(0)" (click)="addOrder()">
                       <i class="fas fa-plus-square"></i>&nbsp; Add
                     </a>
@@ -25,48 +24,35 @@
                   <thead>
                   <tr>                
                     <th>Order Id</th>
-                    <th>Product Id</th>
+                    <th>Product Name</th>
                     <th>Invoice No</th>
                     <th>Order Date</th>
                     <th>Total Price</th>
                     <th>Brand Name</th>
-                    <th>Number Shipped</th>
-                    <th>Customer First Name</th>
-                    <th>Customer First Name</th>
-                    <th>Action</th>
+                    <th>Shipped Quantity</th>
+                    <th>Customer F.Name</th>
+                    <th>Customer L.Name</th>
                   </tr>
                   </thead>
                   <tbody>                     
-                 <tr *ngFor="let order of allOrder">
+                 <tr *ngFor="let order of allOrder |filter:filter| paginate: { itemsPerPage: 5, currentPage: p}">
                     <td>{{order.order_id}}</td>
                     <td>{{order.order_pro_id}}</td>
                     <td>{{order.order_invoice}}</td>
-                    <td>{{order.order_date}}</td>
-                    <td>{{order.order_tprice}}</td>
+                    <td>{{order.order_date | date: 'dd-MMM-yyyy'}}</td>
+                    <td>{{order.order_tprice | currency: 'LKR': 'code'}}</td>
                     <td>{{order.order_brand}}</td>
                     <td>{{order.order_no_shipped}}</td>
                     <td>{{order.order_cust_fname}}</td>
                     <td>{{order.order_cust_lname}}</td>
-                    <td>
-                        <button href="javascript:void(0)" class="btn btn-edit" (click)="editOrder()"><i class="far fa-edit"></i>&nbsp; Edit</button>
-                    </td>
-                  </tr> 
-                  <!--<tr>
-                    <td>0001</td>
-                    <td>0002</td>
-                    <td>1121</td>
-                    <td>05-12-2021</td>
-                    <td>10000</td>
-                    <td>DDDD</td>
-                    <td>1000</td>
-                    <td>FFFF</td>
-                    <td>EEEE</td>
-                    <td>
-                        <button href="javascript:void(0)" class="btn btn-edit" (click)="editOrder()"><i class="far fa-edit"></i>&nbsp; Edit</button>
-                    </td>
-                  </tr> -->          
-                  </tbody>
+                  </tr>        
+                  </tbody>                
                 </table>
+                <div>
+                  <ul class="pagination">  
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>  
+                  </ul> 
+                 </div>
               </div>
             </div>
           </div>

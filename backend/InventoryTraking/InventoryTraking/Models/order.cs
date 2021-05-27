@@ -23,5 +23,7 @@ namespace InventoryTraking.Models
         public Nullable<int> order_no_shipped { get; set; }
         public string order_cust_fname { get; set; }
         public string order_cust_lname { get; set; }
+    
+        public virtual product product { get; set; }
     }
 }
