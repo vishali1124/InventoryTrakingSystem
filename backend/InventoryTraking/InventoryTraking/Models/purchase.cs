@@ -21,5 +21,7 @@ namespace InventoryTraking.Models
         public Nullable<decimal> Purchase_price { get; set; }
         public string Purchase_sup_fname { get; set; }
         public string Purchase_sup_lname { get; set; }
+    
+        public virtual product product { get; set; }
     }
 }

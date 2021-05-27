@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="order_id" />
     </Key>
-    <Property Name="order_id" Type="int" Nullable="false" />
+    <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="order_pro_id" Type="int" />
     <Property Name="order_invoice" Type="int" />
     <Property Name="order_date" Type="date" />
@@ -18,13 +18,12 @@
     <Key>
       <PropertyRef Name="product_id" />
     </Key>
-    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="product_name" Type="varchar" MaxLength="255" />
     <Property Name="product_type" Type="varchar" MaxLength="255" />
     <Property Name="product_brand" Type="varchar" MaxLength="255" />
     <Property Name="product_lable" Type="varchar" MaxLength="255" />
     <Property Name="product_start_inv" Type="int" />
-    <Property Name="product_in_inv" Type="int" />
     <Property Name="product_min_req" Type="int" />
     <Property Name="product_unit_pr" Type="decimal" Precision="18" Scale="0" />
     <Property Name="product_sell_pr" Type="decimal" Precision="18" Scale="0" />
@@ -33,7 +32,7 @@
     <Key>
       <PropertyRef Name="Purchase_id" />
     </Key>
-    <Property Name="Purchase_id" Type="int" Nullable="false" />
+    <Property Name="Purchase_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Purchase_pro_id" Type="int" />
     <Property Name="Purchase_date" Type="date" />
     <Property Name="Purchase_no" Type="int" />
@@ -41,9 +40,41 @@
     <Property Name="Purchase_sup_fname" Type="varchar" MaxLength="250" />
     <Property Name="Purchase_sup_lname" Type="varchar" MaxLength="250" />
   </EntityType>
+  <Association Name="FK_order_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="order_pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_purchase_product">
+    <End Role="product" Type="Self.product" Multiplicity="0..1" />
+    <End Role="purchase" Type="Self.purchase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="purchase">
+        <PropertyRef Name="Purchase_pro_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="inventoryModelStoreContainer">
     <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="purchase" EntityType="Self.purchase" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_order_product" Association="Self.FK_order_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_purchase_product" Association="Self.FK_purchase_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="purchase" EntitySet="purchase" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>
