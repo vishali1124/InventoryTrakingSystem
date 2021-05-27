@@ -1,0 +1,99 @@
+<div class="addForm">
+    <div class="card">
+        <div class="card-header">
+          <h4>
+              Add Outgoing Order
+          </h4>      
+        </div>    
+        <div class="card-body">
+            <!--Form Start-->
+            <form [formGroup]="addOrder"  method="POST" (ngSubmit)="onFormSubmit()">
+                <div class="form-row">
+                    <!--Get Product name and save as product id-->
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Product Name</label>
+                        <select class="form-control"  formControlName="order_pro_id" name="order_pro_id" id="order_pro_id" required  ngModel>
+                            <option class="option" *ngFor="let product of allProducts" value="{{product.product_id}}">
+                                {{product.product_name}}
+                            </option>
+                        </select>
+                        <span class="error" *ngIf="addOrder.controls['order_pro_id'].invalid && addOrder.controls['order_pro_id'].touched">
+                            Please Enter Product Id
+                        </span>
+                    </div>
+                    <!--End-->
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Invoice No</label>
+                        <input type="text" class="form-control" formControlName="order_invoice" name="order_invoice" id="order_invoice" required  ngModel>
+                        <span class="error" *ngIf="addOrder.controls['order_invoice'].invalid && addOrder.controls['order_invoice'].touched">
+                            Please Enter Invoice No
+                        </span>
+                    </div>
+                </div>
+                <div class="form-row">                    
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Order Date</label>
+                        <input type="date" class="form-control" formControlName="order_date" name="order_date" id="order_date" required  ngModel>
+                        <span class="error" *ngIf="addOrder.controls['order_date'].invalid && addOrder.controls['order_date'].touched">
+                            Please Enter Order Date
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Total Price</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text bg-color">
+                                Rs
+                                </div>
+                            </div>
+                            <input type="text" class="form-control currency" formControlName="order_tprice" name="order_tprice" id="order_tprice" required ngModel>
+                        </div>
+                        <span class="error" *ngIf="addOrder.controls['order_tprice'].invalid && addOrder.controls['order_tprice'].touched">
+                            Please Enter Total Price
+                        </span> 
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Brand Name</label>
+                        <select class="form-control"  formControlName="order_brand" name="order_brand" id="order_brand" required  ngModel>
+                            <option class="option" *ngFor="let productBrand of productBrands" value="{{productBrand}}">
+                                {{productBrand}}
+                            </option>
+                        </select>
+                        <span class="error" *ngIf="addOrder.controls['order_brand'].invalid && addOrder.controls['order_brand'].touched">
+                            Please Enter Brand Name
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Shipped Quantity</label>
+                        <input type="number" class="form-control" formControlName="order_no_shipped" name="order_no_shipped" id="order_no_shipped" required  ngModel>
+                        <span class="error" *ngIf="addOrder.controls['order_no_shipped'].invalid && addOrder.controls['order_no_shipped'].touched">
+                            Please Enter Number Shipped
+                        </span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Customer First Name</label>
+                        <input type="text" class="form-control" formControlName="order_cust_fname" name="order_cust_fname" id="order_cust_fname" required  ngModel>
+                        <span class="error" *ngIf="addOrder.controls['order_cust_fname'].invalid && addOrder.controls['order_cust_fname'].touched">
+                            Please Enter Customer first Name
+                        </span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputDefault">Customer Last Name</label>
+                        <input type="text" class="form-control" formControlName="order_cust_lname" name="order_cust_lname" id="order_cust_lname" required  ngModel>
+                        <span class="error" *ngIf="addOrder.controls['order_cust_lname'].invalid && addOrder.controls['order_cust_lname'].touched">
+                            Please Enter Customer Last Name
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-bg"><i class="fas fa-plus-square"></i>&nbsp; Add Order</button>
+                </div>
+            </form>
+            <!--Form End-->
+        </div>   
+      </div>
+</div>

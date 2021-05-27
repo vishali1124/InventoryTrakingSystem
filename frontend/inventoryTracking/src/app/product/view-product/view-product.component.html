@@ -1,0 +1,66 @@
+<div class="viewTable">
+    <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Product Details</h4>
+              <div class="searchAdd">
+                <form class="form-inline mr-auto">
+                  <div class="search-element align-self-end">
+                    <!--search-->
+                    <input class="form-control" type="search"  [(ngModel)]="filter" name="searchProduct" id="searchProduct" placeholder="Search product" data-width="200">                 
+                    <span>&nbsp;&nbsp;</span>
+                    <!--Add product-->
+                    <a href="add.php" class="btn btn-bg" href="javascript:void(0)" (click)="addProduct()">
+                      <i class="fas fa-plus-square"></i>&nbsp; Add
+                    </a>
+                  </div>
+                </form>
+              </div> 
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped" id="table-1">
+                  <thead>
+                  <tr>                
+                    <th>Product Id</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Brand</th>
+                    <th>Label</th>
+                    <th>Inventory</th>
+                    <th>Minimal</th>
+                    <th>Unit Price</th>
+                    <th>Selling Price</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let product of allProducts |filter:filter| paginate: { itemsPerPage: 5, currentPage: p}">
+                    <td>{{product.product_id}}</td>
+                    <td>{{product.product_name}}</td>
+                    <td>{{product.product_type}}</td>
+                    <td>{{product.product_brand}}</td>
+                    <td>{{product.product_lable}}</td>
+                    <td>{{product.product_start_inv}}</td>
+                    <td>{{product.product_min_req}}</td>
+                    <td>{{product.product_unit_pr | currency: 'LKR': 'code'}}</td>
+                    <td>{{product.product_sell_pr | currency: 'LKR': 'code'}}</td>
+                    <td>
+                        <button href="javascript:void(0)" class="btn btn-edit" href="javascript:void(0)" (click)="editProduct(product)"><i class="fas fa-edit fa-lg"></i></button>
+                        <button href="javascript:void(0)" class="btn btn-delete" href="javascript:void(0)" (click)="deleteProduct(product)"><i class="fas fa-trash-alt fa-lg"></i></button>
+                    </td>
+                  </tr>      
+                  </tbody>                  
+                </table>
+                <div>
+                  <ul class="pagination">  
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>  
+                  </ul> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
